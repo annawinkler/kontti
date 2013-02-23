@@ -38,20 +38,27 @@ class Hyphenate
 		# @tavut = map { split /[^$v$k]+/ } @tavut;
 #		tavut = sanat.split(/[VOWELS_CLASS CONSONANTS_CLASS]+/)
 		#tavut = sanat.split(/[["aeiouyäåöAEIOUYÅÄÖ"]["bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ"]]+/)
-		tavut = sanat.split(/\W/)
+		tavut = sanat.split(/\W/).join(" ")
     	puts "Input word = " + sanat
     	# Syllable division before any CV.
     	# Exception: the rare loanword-based ^CC syllables.
 	    # @tavut = map { split /(?=(?<!^$K)$K$V)/ } @tavut;
+	    tavut = tavut.split(/(?=(?<!^[bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ])[bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ][aeiouyäåöAEIOUYÅÄÖ])/).join(" ")
 
-	    # Syllable division between any VV pair
-    	# that is not a Finnish diphtong.
-
+	    #
+	    # Syllable division between any VV pair that is not a Finnish diphthong.
+	    #
     	#@tavut = map { split /(.*?[aA])(?=[eoEO])/ }       @tavut;
     	#@tavut = map { split /(.*?[eiEI])(?=[aoäöAOÄÖ])/ } @tavut;
     	#@tavut = map { split /(.*?[ouOU])(?=[aeAE])/ }     @tavut;
     	#@tavut = map { split /(.*?[yäYÄ])(?=[eäEÄ])/ }     @tavut;
     	#@tavut = map { split /(.*?[öÖ])(?=[eE])/ }         @tavut;
+
+		tavut = tavut.split(/(.*?[aA])(?=[eoEO])/).join(" ")
+		tavut = tavut.split(/(.*?[eiEI])(?=[aoäöAOÄÖ])/).join(" ")
+    	tavut = tavut.split(/(.*?[ouOU])(?=[aeAE])/).join(" ")
+    	tavut = tavut.split(/(.*?[yäYÄ])(?=[eäEÄ])/).join(" ")
+    	tavut = tavut.split(/(.*?[öÖ])(?=[eE])/).join(" ")
 
 		tavut
 	end
