@@ -27,6 +27,19 @@ module Kontti
     
     def self.change( input, key_word = AFFIX )
     	#add_konnti unless !check_keyword( key_word )
+    	hyphenated_input = Hyphenate::tavuta( input )
+    	
+    	# Make sure the key_word to insert is valid, then set the consonants & vowels
+    	if check_keyword( key_word )
+    		k1 = key_word[0]
+    		v1 = key_word[1]
+    		k2 = key_word[2]
+    		k3 = key_word[3]
+
+    		puts "Keyword #{key_word} is valid #{k1} #{v1} #{k2} #{k3}"
+    	end
+
+
 
  #    	for my $s (split(/([$v$k]+)/, $s)) {
 	# $kontitettu .= $s, next unless $s =~ /[$v$k]/;

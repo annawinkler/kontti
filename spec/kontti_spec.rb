@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 require 'kontti'
 
 # How to run these tests:
@@ -7,7 +9,7 @@ describe Kontti::KonttiFun do
     Kontti::KonttiFun.change( "hevonen" ).should eq("kovonen-hentti")
   end
 
-  it "returns 'kon ontti keillä montti kauska hontti koti täntti' for 'on meillä hauska täti'" do
+  it "returns kon ontti keillä montti kauska hontti koti täntti for on meillä hauska täti" do
   	Kontti::KonttiFun.change( "on meillä hauska täti" ).should eq( "kon ontti keillä montti kauska hontti koti täntti" )
   end
 
